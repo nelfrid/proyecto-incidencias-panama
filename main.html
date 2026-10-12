@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta y registra reportes ciudadanos de terremotos y deslizamientos en Panamá.">
+    <title>Incidencias Panamá | Reportes ciudadanos</title>
+    <link rel="stylesheet" href="Frontend/main/styles.css">
+    <script src="Frontend/main/app.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="main.html" aria-label="Incidencias Panamá, inicio">
+                <span class="brand-mark" aria-hidden="true">IP</span>
+                <span><strong>Incidencias</strong><small>Panamá</small></span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a class="active" href="#incidencias">Incidencias</a>
+                <a href="#estadisticas">Estadísticas</a>
+                <a href="#acerca">Acerca del sistema</a>
+            </nav>
+            <a class="button button-primary header-action" href="Frontend/incidentes/incidentes.html">Crear reporte</a>
+        </div>
+    </header>
+
+    <main id="contenido">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <p class="eyebrow">Información ciudadana centralizada</p>
+                    <h1 id="hero-title">Reportes de incidencias en Panamá</h1>
+                    <p>Consulta eventos reportados por la ciudadanía y aporta información útil sobre situaciones de emergencia.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="Frontend/incidentes/incidentes.html">Reportar una incidencia</a>
+                        <a class="button button-secondary" href="#incidencias">Consultar reportes</a>
+                    </div>
+                </div>
+                <aside class="notice" aria-label="Aviso importante">
+                    <span class="notice-label">Importante</span>
+                    <h2>Este sistema no reemplaza los canales oficiales.</h2>
+                    <p>Ante una emergencia inmediata, llama al 911 o contacta a SINAPROC. Los reportes quedan pendientes de verificación.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="metrics" id="estadisticas" aria-labelledby="metrics-title">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <h2 id="metrics-title">Resumen de reportes</h2>
+                    <p>Datos de demostración para validar la interfaz del prototipo.</p>
+                </div>
+                <div class="metrics-grid">
+                    <article class="metric metric-main"><span>Total registrado</span><strong id="total-count">0</strong><small>incidencias visibles</small></article>
+                    <article class="metric"><span>Terremotos</span><strong id="earthquake-count">0</strong><small>reportes</small></article>
+                    <article class="metric"><span>Deslizamientos</span><strong id="landslide-count">0</strong><small>reportes</small></article>
+                    <article class="metric"><span>Requieren asistencia</span><strong id="assistance-count">0</strong><small>casos</small></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="reports-section" id="incidencias" aria-labelledby="reports-title">
+            <div class="section-shell">
+                <div class="reports-heading">
+                    <div><h2 id="reports-title">Incidencias registradas</h2><p>Filtra los reportes por ubicación, tipo o nivel de gravedad.</p></div>
+                    <p class="results-count" id="results-count" aria-live="polite"></p>
+                </div>
+                <form class="filters" id="filters" aria-label="Filtros de incidencias">
+                    <label><span>Provincia</span><select id="province-filter" name="provincia"><option value="">Todas las provincias</option></select></label>
+                    <label><span>Distrito</span><select id="district-filter" name="distrito" disabled><option value="">Todos los distritos</option></select></label>
+                    <label><span>Corregimiento</span><select id="township-filter" name="corregimiento" disabled><option value="">Todos los corregimientos</option></select></label>
+                    <label><span>Tipo</span><select id="type-filter" name="tipo"><option value="">Todos los tipos</option><option value="Terremoto">Terremoto</option><option value="Deslizamiento">Deslizamiento</option></select></label>
+                    <label><span>Gravedad</span><select id="severity-filter" name="gravedad"><option value="">Cualquier gravedad</option><option value="Alta">Alta</option><option value="Media">Media</option><option value="Baja">Baja</option></select></label>
+                    <button class="clear-button" id="clear-filters" type="reset">Limpiar filtros</button>
+                </form>
+                <div class="reports-layout">
+                    <div class="reports-list" id="reports-list" aria-live="polite"></div>
+                    <aside class="coverage-panel" aria-labelledby="coverage-title">
+                        <div><span class="panel-kicker">Cobertura actual</span><h3 id="coverage-title">Provincias con reportes</h3><p>La intensidad indica la cantidad relativa de incidencias incluidas en esta demostración.</p></div>
+                        <div class="province-coverage" id="province-coverage"></div>
+                        <p class="coverage-note">Los datos mostrados no representan alertas oficiales.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="acerca" aria-labelledby="about-title">
+            <div class="section-shell about-grid">
+                <div><h2 id="about-title">Información organizada para comprender cada evento</h2><p>El prototipo reúne ubicación, fecha, gravedad, personas afectadas y necesidad de asistencia en un formato fácil de consultar.</p></div>
+                <ol class="process-list">
+                    <li><strong>Reporta</strong><span>Registra los datos conocidos del evento.</span></li>
+                    <li><strong>Valida</strong><span>El sistema revisa que la información esté completa.</span></li>
+                    <li><strong>Consulta</strong><span>El reporte aparece como pendiente de verificación.</span></li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="section-shell footer-inner"><div><strong>Incidencias Panamá</strong><p>Prototipo experimental de reporte ciudadano.</p></div><p>Para emergencias, llama al <strong>911</strong>.</p></div></footer>
+</body>
+</html>
